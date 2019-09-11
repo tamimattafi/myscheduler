@@ -1,4 +1,4 @@
-package com.tamimattafi.myscheduler.database.dao.global
+package com.tamimattafi.myscheduler.database.global
 
 import androidx.sqlite.db.SimpleSQLiteQuery
 

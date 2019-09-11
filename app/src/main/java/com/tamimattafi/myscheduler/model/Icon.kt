@@ -4,7 +4,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.tamimattafi.myscheduler.database.Tables
+import com.tamimattafi.myscheduler.database.global.Tables
 
 @Entity(tableName = Tables.TABLE_ICONS)
 data class Icon(

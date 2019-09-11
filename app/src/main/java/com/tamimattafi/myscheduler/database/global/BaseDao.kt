@@ -1,12 +1,11 @@
-package com.tamimattafi.myscheduler.database.dao.global
+package com.tamimattafi.myscheduler.database.global
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.RawQuery
+import androidx.room.*
 import androidx.sqlite.db.SimpleSQLiteQuery
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
+
 
 @Dao
 interface BaseDao<T> {
@@ -18,15 +17,18 @@ interface BaseDao<T> {
     fun getList(listQuery: SimpleSQLiteQuery) : Flowable<List<T>>
 
     @Insert
-    fun insertList(items : ArrayList<T>) : Completable
+    fun insertAll(items: List<T>): Completable
 
     @Insert
     fun insert(item : T) : Completable
+
+    @Update
+    fun update(item: T): Completable
 
     @Delete
     fun delete(item : T) : Completable
 
     @RawQuery
-    fun deleteAll(deleteAllQuery : SimpleSQLiteQuery) : Completable
+    fun deleteAll(deleteAllQuery: SimpleSQLiteQuery): Single<Int>
 
 }

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">My Scheduler!</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="no_data">No Data</string>
+    <string name="no_data_yet">There is no data to show, would you like to create some?</string>
+    <string name="create">Creat</string>
+    <string name="cancel">Cancel</string>
+    <string name="confirm">Confirm</string>
+    <string name="close">Close</string>
 </resources>

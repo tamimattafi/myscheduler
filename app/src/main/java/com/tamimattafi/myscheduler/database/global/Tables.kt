@@ -1,4 +1,4 @@
-package com.tamimattafi.myscheduler.database
+package com.tamimattafi.myscheduler.database.global
 
 object Tables {
     const val TABLE_ROUTINES = "routines"

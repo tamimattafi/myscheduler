@@ -25,9 +25,9 @@ class MenuItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
         }
     }
 
-    override fun bindListeners(listener: SelectionDialogContract.ListDialogActionListener<MenuItemData>) {
+    override fun bindListeners(listener: (item: MenuItemData) -> Unit) {
         itemView.setOnClickListener {
-            listener.onItemSelected(item)
+            listener.invoke(item)
         }
     }
 

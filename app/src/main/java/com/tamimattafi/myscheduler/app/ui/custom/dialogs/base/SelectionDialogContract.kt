@@ -5,14 +5,14 @@ interface SelectionDialogContract {
     interface SelectionDialog<OBJECT, HOLDER : SelectionDialogHolder<OBJECT>> {
         fun getSelectionAdapter(
             data: ArrayList<OBJECT>,
-            listener: ListDialogActionListener<OBJECT>
+            listener: (item: OBJECT) -> Unit
         ): SelectionAdapter<OBJECT, HOLDER>
 
-        fun bindData(data: ArrayList<OBJECT>, listener: ListDialogActionListener<OBJECT>)
+        fun bindData(data: ArrayList<OBJECT>, listener: (item: OBJECT) -> Unit)
     }
 
     interface SelectionDialogHolder<OBJECT> {
-        fun bindListeners(listener: ListDialogActionListener<OBJECT>)
+        fun bindListeners(listener: (item: OBJECT) -> Unit)
         fun bindData(item: OBJECT)
     }
 

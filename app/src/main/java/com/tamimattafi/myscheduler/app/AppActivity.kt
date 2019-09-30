@@ -5,7 +5,7 @@ import com.tamimattafi.myscheduler.R
 import com.tamimattafi.myscheduler.app.ui.fragments.global.NavigationActivity
 import javax.inject.Inject
 
-class MainActivity : NavigationActivity() {
+class AppActivity : NavigationActivity() {
 
     @Inject
     lateinit var launcher: Launcher

@@ -24,5 +24,4 @@ abstract class Database : RoomDatabase() {
     abstract fun iconDao() : IconDao
     abstract fun routineDao() : RoutineDao
     abstract fun reminderDao() : ReminderDao
-
 }

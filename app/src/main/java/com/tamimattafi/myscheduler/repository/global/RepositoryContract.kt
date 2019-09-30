@@ -1,4 +1,4 @@
-package com.tamimattafi.zennex.repository.global
+package com.tamimattafi.myscheduler.repository.global
 
 import android.os.AsyncTask
 import io.reactivex.Completable
@@ -9,55 +9,40 @@ interface RepositoryContract {
 
 
     interface Base<T> {
-        fun getData()
-        fun destroy()
-        fun get(id: Int)
-        fun set(item: T)
-        fun delete(item: T)
-        fun update(item: T)
+        fun getData(): Callback<Flowable<List<T>>>
+        fun get(id: Int): Callback<Maybe<T>>
+        fun set(item: T): Callback<Completable>
+        fun delete(item: T): Callback<Completable>
+        fun update(item: T): Callback<Completable>
+        fun stopListening()
     }
 
-    interface LocalBase<T> : Base<T>, LocalCallBack<T> {
+    abstract class Async<PARAM, RESULT>(private val callback: Callback<RESULT>) :
+        AsyncTask<PARAM, Int, RESULT>() {
 
-        abstract class LocalRepository<T> : LocalBase<T> {
-            override var onListReadComplete: ((it: Flowable<List<T>>) -> Unit)? = null
-            override var onWriteComplete: ((Completable) -> Unit)? = null
-            override var onReadComplete: ((it: Maybe<T>) -> Unit)? = null
+        abstract fun doWork(parameter: PARAM): RESULT
 
-
-            override fun stopListening() {
-                onListReadComplete = null
-                onWriteComplete = null
-                onReadComplete = null
-            }
-
-            override fun destroy() {
-                stopListening()
+        override fun doInBackground(vararg params: PARAM): RESULT {
+            return try {
+                doWork(params[0])
+            } catch (e: Exception) {
+                callback.onFailure?.invoke(e.localizedMessage ?: e.message ?: e.toString())
+                throw Exception(e.message)
             }
         }
-
-    }
-
-
-    abstract class Async<PARAMS, RESULT> : AsyncTask<PARAMS, Int, RESULT>(),
-        CompleteCallback<RESULT> {
-
-        override var onComplete: ((it: RESULT) -> Unit)? = null
 
         override fun onPostExecute(result: RESULT) {
             super.onPostExecute(result)
-            onComplete?.invoke(result)
+            callback.onSuccess?.invoke(result)
         }
+
     }
 
-    interface CompleteCallback<RESULT> {
-        var onComplete: ((it: RESULT) -> Unit)?
-    }
-
-    interface LocalCallBack<T> {
-        var onReadComplete: ((it: Maybe<T>) -> Unit)?
-        var onListReadComplete: ((it: Flowable<List<T>>) -> Unit)?
-        var onWriteComplete: ((Completable) -> Unit)?
-        fun stopListening()
+    interface Callback<T> {
+        var onSuccess: ((result: T) -> Unit)?
+        var onFailure: ((message: String) -> Unit)?
+        fun setOnSuccessListener(onSuccess: (result: T) -> Unit): Callback<T>
+        fun setOnFailureListener(onFailure: (message: String) -> Unit): Callback<T>
+        fun destroy()
     }
 }

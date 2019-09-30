@@ -16,8 +16,8 @@ class ConfirmationDialog(context: Context) {
     private val dialog: AlertDialog
 
 
-    var onConfirm: (() -> Unit)? = null
-    var onCancel: (() -> Unit)? = null
+    private var onConfirm: (() -> Unit)? = null
+    private var onCancel: (() -> Unit)? = null
 
 
     var title: String? = ""
@@ -55,6 +55,12 @@ class ConfirmationDialog(context: Context) {
         }
 
     }
+
+    fun setConfirmListener(onConfirm: () -> Unit): ConfirmationDialog =
+        this.also { it.onConfirm = onConfirm }
+
+    fun setCancelListener(onCancel: () -> Unit): ConfirmationDialog =
+        this.also { it.onCancel = onCancel }
 
     fun show() {
         dialog.show()

@@ -15,11 +15,12 @@ object EmptyHolderList {
                 add(
                     EmptyHolderData(
                         EMPTY_LIST,
-                        R.drawable.placeholder_empty,
+                        R.drawable.ic_snowflake,
                         getString(R.string.no_data),
                         getString(R.string.no_data_yet),
                         Actions.ACTION_CREATE,
-                        getString(R.string.create)
+                        getString(R.string.create),
+                        R.drawable.ic_add
                     )
                 )
             }

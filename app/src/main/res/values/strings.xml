@@ -1,10 +1,46 @@
 <resources>
+
+    <!--    translatable -->
     <string name="app_name">My Scheduler!</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="no_data">No Data</string>
     <string name="no_data_yet">There is no data to show, would you like to create some?</string>
-    <string name="create">Creat</string>
+    <string name="create">Create</string>
     <string name="cancel">Cancel</string>
     <string name="confirm">Confirm</string>
     <string name="close">Close</string>
+    <string name="search">Search</string>
+    <string name="add_routine">Add Routine</string>
+    <string name="basic_information">Basic Information</string>
+    <string name="name">Name</string>
+    <string name="description">Description</string>
+    <string name="importance">Importance</string>
+    <string name="advanced_details">Advanced Details</string>
+    <string name="start_day">Start Day</string>
+    <string name="save">Save</string>
+    <string name="number_of_days">Number of days</string>
+
+
+    <string-array name="Importance">
+        <item>Low</item>
+        <item>Normal</item>
+        <item>Max</item>
+    </string-array>
+
+    <string-array name="Days">
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+        <item>Saturday</item>
+        <item>Sunday</item>
+    </string-array>
+
+    <!--  non translatable properties  -->
+    <string name="routine_icon">routineIcon</string>
+    <string name="required_field">This field is required!</string>
+    <string name="cancel_confirmation">Do you really want to cancel? Any entered data won\'t be saved.</string>
+    <string name="error">Error</string>
+
 </resources>

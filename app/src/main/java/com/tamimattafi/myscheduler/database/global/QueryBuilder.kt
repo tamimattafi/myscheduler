@@ -63,7 +63,7 @@ class QueryBuilder(var rawQuery : String = "") {
         fun getAll(table : String) : SimpleSQLiteQuery
             = QueryBuilder().selectFrom(table).build()
 
-        fun getItem(table: String, id : Long) : SimpleSQLiteQuery
+        fun getItem(table: String, id: Int): SimpleSQLiteQuery
             = QueryBuilder().selectFrom(table).where("id", "=", id).build()
 
         fun deleteAll(table: String) : SimpleSQLiteQuery

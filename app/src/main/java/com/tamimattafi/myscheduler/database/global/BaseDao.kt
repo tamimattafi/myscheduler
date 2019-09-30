@@ -2,18 +2,35 @@ package com.tamimattafi.myscheduler.database.global
 
 import androidx.room.*
 import androidx.sqlite.db.SimpleSQLiteQuery
+import com.tamimattafi.myscheduler.model.Icon
+import com.tamimattafi.myscheduler.model.Reminder
+import com.tamimattafi.myscheduler.model.Routine
+import com.tamimattafi.myscheduler.model.Task
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Maybe
 import io.reactivex.Single
 
 
 @Dao
 interface BaseDao<T> {
 
-    @RawQuery
-    fun get(itemQuery : SimpleSQLiteQuery) : Flowable<T>
+    @RawQuery(
+        observedEntities =
+        [Task::class,
+            Icon::class,
+            Reminder::class,
+            Routine::class]
+    )
+    fun get(itemQuery: SimpleSQLiteQuery): Maybe<T>
 
-    @RawQuery
+    @RawQuery(
+        observedEntities =
+        [Task::class,
+            Icon::class,
+            Reminder::class,
+            Routine::class]
+    )
     fun getList(listQuery: SimpleSQLiteQuery) : Flowable<List<T>>
 
     @Insert

@@ -28,7 +28,7 @@ abstract class BottomSelectionDialog<OBJECT, HOLDER : SelectionDialogContract.Se
 
     override fun bindData(
         data: ArrayList<OBJECT>,
-        listener: SelectionDialogContract.ListDialogActionListener<OBJECT>
+        listener: (item: OBJECT) -> Unit
     ) {
         dialogView.recycler.adapter = getSelectionAdapter(data, listener)
     }

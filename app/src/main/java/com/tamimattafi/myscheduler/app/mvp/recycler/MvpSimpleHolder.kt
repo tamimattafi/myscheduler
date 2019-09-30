@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 
 abstract class MvpSimpleHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-    MvpRecyclerContract.ListenerHolder {
+    MvpRecyclerContract.Holder {
 
     override var listPosition: Int = -1
 
@@ -17,22 +17,17 @@ abstract class MvpSimpleHolder(itemView: View) : RecyclerView.ViewHolder(itemVie
     open fun onListenerSet(listener: MvpRecyclerContract.Listener?) {
         with(itemView) {
             setOnClickListener {
-                listener?.onHolderClick(listPosition, adapterPosition, this@MvpSimpleHolder.getId())
+                listener?.onHolderClick(listPosition, adapterPosition)
             }
 
             setOnLongClickListener {
                 listener?.onHolderLongClick(
                     listPosition,
-                    adapterPosition,
-                    this@MvpSimpleHolder.getId()
+                    adapterPosition
                 )
                 true
             }
         }
     }
-
-
-    open fun getId(): Int? = null
-
 
 }

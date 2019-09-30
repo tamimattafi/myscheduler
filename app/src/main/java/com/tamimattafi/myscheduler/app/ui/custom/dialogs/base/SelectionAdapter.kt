@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 abstract class SelectionAdapter<OBJECT, HOLDER : SelectionDialogContract.SelectionDialogHolder<OBJECT>>(
     private val data: ArrayList<OBJECT>,
-    private val listener: SelectionDialogContract.ListDialogActionListener<OBJECT>
+    private val listener: (item: OBJECT) -> Unit
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 

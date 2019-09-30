@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_centerInParent="true"
     android:layout_gravity="center"
     android:background="@android:color/transparent"
     android:gravity="center"
-    android:minHeight="@dimen/bottom_loading_footer"
     android:orientation="horizontal">
 
     <ProgressBar
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="24dp" />
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="24dp"
+        android:indeterminateTint="@color/colorPrimaryDarkLight"
+        tools:targetApi="lollipop" />
 </RelativeLayout>

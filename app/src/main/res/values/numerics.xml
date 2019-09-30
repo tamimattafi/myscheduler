@@ -1,0 +1,4 @@
+<resources>
+    <integer name="max_days">12</integer>
+    <integer name="min_days">3</integer>
+</resources>

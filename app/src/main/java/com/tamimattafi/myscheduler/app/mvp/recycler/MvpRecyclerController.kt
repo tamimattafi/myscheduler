@@ -6,14 +6,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tamimattafi.myscheduler.R
 import com.tamimattafi.myscheduler.app.ui.custom.decorators.ItemOffsetDecoration
 
-open class MvpRecyclerController<HOLDER : MvpRecyclerContract.Holder>(override val recycler: RecyclerView) :
+open class MvpRecyclerController<HOLDER : MvpRecyclerContract.Holder>(
+    val recycler: RecyclerView,
+    private val view: MvpRecyclerContract.View<HOLDER>
+) :
     MvpRecyclerContract.RecyclerController<HOLDER> {
 
     open fun onSetRecyclerSpan(): Int = 1
 
     lateinit var layoutManager: GridLayoutManager
 
-    override fun prepare(adapter: MvpRecyclerContract.RecyclerAdapter<HOLDER>): Boolean {
+    override fun prepareAdapter(adapter: MvpRecyclerAdapter<HOLDER>): Boolean {
         with(recycler) {
             this@with.layoutManager = GridLayoutManager(
                 context!!,
@@ -21,30 +24,25 @@ open class MvpRecyclerController<HOLDER : MvpRecyclerContract.Holder>(override v
             ).also { setUpLayoutManagerSpan(it) }
             itemAnimator = DefaultItemAnimator()
             addItemDecoration(onSetRecyclerDecorator())
+            this.adapter = adapter
         }
 
-        return addRecyclerScrollListener(adapter, recycler)
+        return addRecyclerScrollListener()
 
     }
 
+    override fun startListening() {
+        view.loadMoreData()
+    }
 
-    override fun getViewHolder(position: Int): HOLDER? =
-        layoutManager.findViewByPosition(position) as? HOLDER
-
-
-    open fun addRecyclerScrollListener(
-        adapter: MvpRecyclerContract.RecyclerAdapter<HOLDER>,
-        recyclerView: RecyclerView
-    ): Boolean {
-        recyclerView.addOnScrollListener(
+    open fun addRecyclerScrollListener(): Boolean {
+        recycler.addOnScrollListener(
             object : RecyclerView.OnScrollListener() {
                 override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                    with(adapter) {
-                        if (dy > 0 && !isLoading && !allData) {
-                            (recyclerView.layoutManager as? GridLayoutManager)?.apply {
-                                if (findLastVisibleItemPosition() >= itemCount * 90 / 100) {
-                                    loadMore()
-                                }
+                    if (dy > 0) {
+                        (recyclerView.layoutManager as? GridLayoutManager)?.apply {
+                            if (findLastVisibleItemPosition() >= itemCount * 90 / 100) {
+                                view.loadMoreData()
                             }
                         }
                     }

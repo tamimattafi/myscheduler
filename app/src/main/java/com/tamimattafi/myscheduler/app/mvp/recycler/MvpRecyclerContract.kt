@@ -1,56 +1,48 @@
 package com.tamimattafi.myscheduler.app.mvp.recycler
 
-import androidx.recyclerview.widget.RecyclerView
 import com.tamimattafi.myscheduler.app.mvp.BaseContract
 
 
 interface MvpRecyclerContract {
 
-    interface RecyclerAdapter<HOLDER : Holder> : PagerRecycler {
-        var allData: Boolean
+    interface Adapter<HOLDER : Holder> {
         var isLoading: Boolean
-        var controller: RecyclerController<HOLDER>?
-        fun getViewHolder(listPosition: Int): HOLDER?
+        fun attachToController(controller: RecyclerController<HOLDER>)
         fun setDataCount(dataCount: Int): Boolean
         fun isEmpty(): Boolean
     }
 
     interface RecyclerController<HOLDER : Holder> {
-        val recycler: RecyclerView
-        fun prepare(adapter: RecyclerAdapter<HOLDER>): Boolean
-        fun getViewHolder(position: Int): HOLDER?
+        fun prepareAdapter(adapter: MvpRecyclerAdapter<HOLDER>): Boolean
+        fun startListening()
     }
 
-    interface PagerRecycler {
-        fun loadMore()
-    }
 
     interface Listener {
-        fun onHolderClick(listPosition: Int, adapterPosition: Int, itemId: Int?)
-        fun onHolderLongClick(listPosition: Int, adapterPosition: Int, itemId: Int?)
-        fun onHolderAction(listPosition: Int, adapterPosition: Int, action: Int, itemId: Int?)
-    }
-
-    interface ListenerHolder {
-        var listPosition: Int
-        var listener: Listener?
+        fun onHolderClick(listPosition: Int, adapterPosition: Int)
+        fun onHolderLongClick(listPosition: Int, adapterPosition: Int)
+        fun onHolderAction(listPosition: Int, adapterPosition: Int, action: Int)
     }
 
     interface Holder : ListenerHolder {
-        var objectId: Int?
+        var listPosition: Int
     }
 
-    interface Object<out ID> {
-        fun getObjectId(): ID
+    interface ListenerHolder {
+        var listener: Listener?
     }
 
     interface Presenter<HOLDER : Holder> : BaseContract.Presenter {
         fun bindViewHolder(holder: HOLDER)
-        fun loadMoreRecyclerData(recycler: RecyclerAdapter<HOLDER>)
+        fun loadMoreRecyclerData()
     }
 
     interface View<HOLDER : Holder> : Listener {
+        fun bindViewHolder(holder: HOLDER)
         fun showError(message: String)
+        fun getRecyclerAdapter(): Adapter<HOLDER>
+        fun loadMoreData()
+        fun onRecyclerDataChanged(dataCount: Int)
     }
 
 

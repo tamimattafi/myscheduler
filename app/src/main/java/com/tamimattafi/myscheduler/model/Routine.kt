@@ -7,10 +7,11 @@ import com.tamimattafi.myscheduler.database.global.Tables
 @Entity(tableName = Tables.TABLE_ROUTINES)
 data class Routine(
     @PrimaryKey(autoGenerate = true) val id : Long? = null,
-    var icon : Long?,
+    var isActive: Boolean = false,
+    var icon: Long? = null,
     var name : String = "",
     var description : String = "",
-    var importance : Int,
-    var size : Int,
-    var startDay : Int
+    var importance: Int = Importance.IMPORTANCE_NORMAL,
+    var days: Int = 7,
+    var startDay: Int = 1
 )

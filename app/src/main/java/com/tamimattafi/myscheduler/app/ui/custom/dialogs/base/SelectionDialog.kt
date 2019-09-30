@@ -19,7 +19,9 @@ abstract class SelectionDialog<OBJECT, HOLDER : SelectionDialogContract.Selectio
     private val dialogView =
         LayoutInflater.from(context).inflate(R.layout.dialog_selection, null, false)
     private val dialog: AlertDialog
-    private var cancelListener: SelectionDialogCancelListener? = null
+
+    private var onCancel: (() -> Unit)? = null
+
 
     init {
         AlertDialog.Builder(context).apply {
@@ -32,7 +34,7 @@ abstract class SelectionDialog<OBJECT, HOLDER : SelectionDialogContract.Selectio
         dialogView.apply {
             cancel.setOnClickListener {
                 dismiss()
-                cancelListener?.onCancel()
+                onCancel?.invoke()
             }
 
             with(recycler) {
@@ -53,13 +55,13 @@ abstract class SelectionDialog<OBJECT, HOLDER : SelectionDialogContract.Selectio
 
     override fun bindData(
         data: ArrayList<OBJECT>,
-        listener: SelectionDialogContract.ListDialogActionListener<OBJECT>
+        listener: (item: OBJECT) -> Unit
     ) {
         dialogView.recycler.adapter = getSelectionAdapter(data, listener)
     }
 
-    fun setOnCancelListener(cancelListener: SelectionDialogCancelListener) {
-        this.cancelListener = cancelListener
+    fun setCancelListener(onCancel: () -> Unit) {
+        this.onCancel = onCancel
     }
 
     fun show() {
@@ -70,8 +72,5 @@ abstract class SelectionDialog<OBJECT, HOLDER : SelectionDialogContract.Selectio
         dialog.dismiss()
     }
 
-    interface SelectionDialogCancelListener {
-        fun onCancel()
-    }
 
 }

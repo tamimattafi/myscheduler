@@ -1,4 +1,4 @@
-package com.tamimattafi.zennex.app.ui.custom.views
+package com.tamimattafi.myscheduler.app.ui.custom.views
 
 import android.content.Context
 import android.os.Build

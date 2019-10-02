@@ -8,7 +8,7 @@ import com.tamimattafi.myscheduler.R
 import com.tamimattafi.myscheduler.app.ui.custom.dialogs.base.BottomSelectionDialog
 import com.tamimattafi.myscheduler.app.ui.custom.dialogs.base.SelectionAdapter
 import com.tamimattafi.myscheduler.app.ui.custom.dialogs.model.MenuItemData
-import com.tamimattafi.myscheduler.app.ui.custom.holders.dialog.MenuItemHolder
+import com.tamimattafi.myscheduler.app.ui.custom.holders.MenuItemHolder
 
 open class MenuBottomSelectionDialog(context: Context) :
     BottomSelectionDialog<MenuItemData, MenuItemHolder>(context, 1) {

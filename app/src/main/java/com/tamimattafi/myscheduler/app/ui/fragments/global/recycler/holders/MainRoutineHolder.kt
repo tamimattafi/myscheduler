@@ -1,11 +1,10 @@
-package com.tamimattafi.myscheduler.app.ui.fragments.main
+package com.tamimattafi.myscheduler.app.ui.fragments.global.recycler.holders
 
 import android.view.View
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import com.tamimattafi.myscheduler.app.mvp.recycler.MvpSimpleHolder
-import com.tamimattafi.myscheduler.app.ui.custom.holders.Actions
-import com.tamimattafi.myscheduler.app.ui.fragments.main.MainContract.RoutineHolder
+import com.tamimattafi.myscheduler.app.ui.fragments.global.recycler.holders.HoldersContract.RoutineHolder
 import com.tamimattafi.myscheduler.utils.AppUtils
 import kotlinx.android.synthetic.main.item_view_holder_empty.view.*
 import kotlinx.android.synthetic.main.item_view_holder_main_routine.view.*

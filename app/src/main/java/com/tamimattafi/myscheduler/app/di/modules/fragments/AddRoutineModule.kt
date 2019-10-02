@@ -11,9 +11,9 @@ import dagger.Module
 abstract class AddRoutineModule {
 
     @Binds
-    abstract fun bindView(addRoutineFragment: AddRoutineFragment): View
+    abstract fun bindView(fragment: AddRoutineFragment): View
 
     @Binds
-    abstract fun bindPresenter(addRoutinePresenter: AddRoutinePresenter): Presenter
+    abstract fun bindPresenter(presenter: AddRoutinePresenter): Presenter
 
 }

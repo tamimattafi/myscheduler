@@ -1,8 +1,8 @@
 package com.tamimattafi.myscheduler.database.global
 
 object Tables {
-    const val TABLE_ROUTINES = "routines"
-    const val TABLE_TASKS = "tasks"
-    const val TABLE_REMINDERS = "reminders"
-    const val TABLE_ICONS = "icons"
+    const val ROUTINES = "routines"
+    const val TASKS = "tasks"
+    const val REMINDERS = "reminders"
+    const val ICONS = "icons"
 }

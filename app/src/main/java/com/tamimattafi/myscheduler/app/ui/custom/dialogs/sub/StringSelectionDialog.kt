@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.tamimattafi.myscheduler.R
 import com.tamimattafi.myscheduler.app.ui.custom.dialogs.base.SelectionAdapter
 import com.tamimattafi.myscheduler.app.ui.custom.dialogs.base.SelectionDialog
-import com.tamimattafi.myscheduler.app.ui.custom.holders.dialog.SimpleStringItemHolder
+import com.tamimattafi.myscheduler.app.ui.custom.holders.SimpleStringItemHolder
 
 class StringSelectionDialog(context: Context?) :
     SelectionDialog<String, SimpleStringItemHolder>(context, 1) {

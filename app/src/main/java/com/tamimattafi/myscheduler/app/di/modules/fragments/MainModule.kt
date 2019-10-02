@@ -11,12 +11,12 @@ import dagger.Module
 abstract class MainModule {
 
     @Binds
-    abstract fun bindView(mainFragment: MainFragment): View
+    abstract fun bindView(fragment: MainFragment): View
 
     @Binds
-    abstract fun bindPresenter(mainPresenter: MainPresenter): Presenter
+    abstract fun bindPresenter(presenter: MainPresenter): Presenter
 
     @Binds
-    abstract fun bindAdapter(mainAdapter: MainAdapter): Adapter
+    abstract fun bindAdapter(adapter: MainAdapter): Adapter
 
 }

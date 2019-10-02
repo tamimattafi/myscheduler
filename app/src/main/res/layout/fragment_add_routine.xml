@@ -47,7 +47,7 @@
 
             <com.tamimattafi.myscheduler.app.ui.custom.views.FormInputLayout android:id="@+id/nameLayout">
 
-                <com.tamimattafi.myscheduler.app.ui.custom.views.FormEditText
+                <com.tamimattafi.myscheduler.app.ui.custom.views.FormInput
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
 
             <com.tamimattafi.myscheduler.app.ui.custom.views.FormInputLayout>
 
-                <com.tamimattafi.myscheduler.app.ui.custom.views.FormEditText
+                <com.tamimattafi.myscheduler.app.ui.custom.views.FormInput
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                 android:layout_marginBottom="8dp"
                 app:startIconDrawable="@drawable/ic_drop_down">
 
-                <com.tamimattafi.myscheduler.app.ui.custom.views.FormEditText
+                <com.tamimattafi.myscheduler.app.ui.custom.views.FormInput
                     android:id="@+id/importance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                 android:id="@+id/startDayLayout"
                 app:startIconDrawable="@drawable/ic_drop_down">
 
-                <com.tamimattafi.myscheduler.app.ui.custom.views.FormEditText
+                <com.tamimattafi.myscheduler.app.ui.custom.views.FormInput
                     android:id="@+id/startDay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

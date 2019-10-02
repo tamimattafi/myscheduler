@@ -2,11 +2,12 @@ package com.tamimattafi.myscheduler.app.ui.fragments.main.add_routine
 
 import android.os.Bundle
 import android.view.View.OnClickListener
+import android.widget.Toast
 import com.tamimattafi.myscheduler.R
 import com.tamimattafi.myscheduler.app.ui.custom.dialogs.specific.ConfirmationDialog
 import com.tamimattafi.myscheduler.app.ui.custom.dialogs.specific.InfoDialog
 import com.tamimattafi.myscheduler.app.ui.custom.dialogs.sub.StringSelectionDialog
-import com.tamimattafi.myscheduler.app.ui.custom.views.FormEditText
+import com.tamimattafi.myscheduler.app.ui.custom.views.FormInput
 import com.tamimattafi.myscheduler.app.ui.custom.views.FormInputLayout
 import com.tamimattafi.myscheduler.app.ui.fragments.global.NavigationContract.NavigationFragment
 import com.tamimattafi.myscheduler.app.ui.fragments.main.add_routine.AddRoutineContract.Presenter
@@ -44,7 +45,7 @@ class AddRoutineFragment : NavigationFragment(), View {
 
     private fun getSelectionDialog(
         list: ArrayList<String>,
-        input: FormEditText
+        input: FormInput
     ): StringSelectionDialog = StringSelectionDialog(appActivity).apply {
         bindData(list) { selected ->
             input.setText(selected)
@@ -77,7 +78,7 @@ class AddRoutineFragment : NavigationFragment(), View {
         }
     }
 
-    private fun checkForm(vararg inputs: Pair<FormEditText, FormInputLayout>): Boolean {
+    private fun checkForm(vararg inputs: Pair<FormInput, FormInputLayout>): Boolean {
         for (input in inputs) {
             if (!isValidInput(input)) {
                 return false
@@ -86,10 +87,17 @@ class AddRoutineFragment : NavigationFragment(), View {
         return true
     }
 
-    private fun isValidInput(input: Pair<FormEditText, FormInputLayout>): Boolean {
+    private fun isValidInput(input: Pair<FormInput, FormInputLayout>): Boolean {
         with(input.second) {
             return if (input.first.text.isNullOrEmpty()) {
-                error = appActivity.resources.getString(R.string.required_field)
+                with(appActivity.resources) {
+                    error = getString(R.string.required_field)
+                    Toast.makeText(
+                        appActivity,
+                        getString(R.string.fill_all_required_data),
+                        Toast.LENGTH_LONG
+                    ).show()
+                }
                 false
             } else {
                 error = null

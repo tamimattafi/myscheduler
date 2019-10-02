@@ -42,5 +42,8 @@
     <string name="required_field">This field is required!</string>
     <string name="cancel_confirmation">Do you really want to cancel? Any entered data won\'t be saved.</string>
     <string name="error">Error</string>
+    <string name="start_searching_now">Are you looking for something? Start searching now!</string>
+    <string name="find">Find</string>
+    <string name="fill_all_required_data">Please fill all required data!</string>
 
 </resources>

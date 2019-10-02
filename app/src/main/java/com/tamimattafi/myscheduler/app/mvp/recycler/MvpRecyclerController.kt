@@ -32,7 +32,7 @@ open class MvpRecyclerController<HOLDER : MvpRecyclerContract.Holder>(
     }
 
     override fun startListening() {
-        view.loadMoreData()
+        view.startListening()
     }
 
     open fun addRecyclerScrollListener(): Boolean {
@@ -42,7 +42,7 @@ open class MvpRecyclerController<HOLDER : MvpRecyclerContract.Holder>(
                     if (dy > 0) {
                         (recyclerView.layoutManager as? GridLayoutManager)?.apply {
                             if (findLastVisibleItemPosition() >= itemCount * 90 / 100) {
-                                view.loadMoreData()
+                                view.startListening()
                             }
                         }
                     }

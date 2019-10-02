@@ -23,10 +23,11 @@ abstract class MvpRecyclerFragment<HOLDER : MvpRecyclerContract.Holder,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter.attachToController(MvpRecyclerController(recycler, this))
+        presenter.onResume()
     }
 
-    override fun loadMoreData() {
-        presenter.loadMoreRecyclerData()
+    override fun startListening() {
+        presenter.loadRecyclerData()
     }
 
     override fun bindViewHolder(holder: HOLDER) {
@@ -39,5 +40,11 @@ abstract class MvpRecyclerFragment<HOLDER : MvpRecyclerContract.Holder,
         Snackbar.make(view!!, message, Snackbar.LENGTH_LONG).show()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenter.onPause()
+    }
+
+    override fun onRecyclerDataChanged(dataCount: Int) {}
 
 }

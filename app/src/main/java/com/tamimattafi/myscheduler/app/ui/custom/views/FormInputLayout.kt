@@ -28,7 +28,7 @@ class FormInputLayout(context: Context, attributeSet: AttributeSet) :
         super.setError(errorText)
         if (!errorText.isNullOrEmpty()) {
             shake()
-            vibrate(50)
+            vibrate(200)
         }
 
     }

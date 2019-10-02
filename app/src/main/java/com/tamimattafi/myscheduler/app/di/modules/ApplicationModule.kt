@@ -8,14 +8,11 @@ import com.tamimattafi.myscheduler.database.dao.ReminderDao
 import com.tamimattafi.myscheduler.database.dao.RoutineDao
 import com.tamimattafi.myscheduler.database.dao.TaskDao
 import com.tamimattafi.myscheduler.database.global.Values
-import com.tamimattafi.myscheduler.model.Routine
-import com.tamimattafi.myscheduler.repository.RoutineRepository
-import com.tamimattafi.myscheduler.repository.global.RepositoryContract.Base
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import dagger.android.support.DaggerApplication
+import javax.inject.Singleton
 
 @Module
 abstract class ApplicationModule {
@@ -24,7 +21,7 @@ abstract class ApplicationModule {
     companion object {
         @JvmStatic
         @Provides
-        @Reusable
+        @Singleton
         fun provideDatabase(context: Context): Database =
             Room.databaseBuilder(context, Database::class.java, Values.DATABASE_NAME)
                 .fallbackToDestructiveMigrationOnDowngrade()
@@ -32,30 +29,25 @@ abstract class ApplicationModule {
 
         @JvmStatic
         @Provides
-        @Reusable
+        @Singleton
         fun provideRoutineDao(database: Database): RoutineDao = database.routineDao()
 
         @JvmStatic
         @Provides
-        @Reusable
+        @Singleton
         fun provideIconDao(database: Database): IconDao = database.iconDao()
 
         @JvmStatic
         @Provides
-        @Reusable
+        @Singleton
         fun provideTaskDao(database: Database): TaskDao = database.taskDao()
 
         @JvmStatic
         @Provides
-        @Reusable
+        @Singleton
         fun provideReminderDao(database: Database): ReminderDao = database.reminderDao()
     }
 
-    @Reusable
-    @Binds
-    abstract fun bindRoutineRepository(routineRepository: RoutineRepository): Base<Routine>
-
-    @Reusable
     @Binds
     abstract fun bindContext(application: DaggerApplication): Context
 }

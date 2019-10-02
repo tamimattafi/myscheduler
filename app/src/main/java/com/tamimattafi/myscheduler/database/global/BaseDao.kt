@@ -45,7 +45,13 @@ interface BaseDao<T> {
     @Delete
     fun delete(item : T) : Completable
 
-    @RawQuery
-    fun deleteAll(deleteAllQuery: SimpleSQLiteQuery): Single<Int>
+    @RawQuery(
+        observedEntities =
+        [Task::class,
+            Icon::class,
+            Reminder::class,
+            Routine::class]
+    )
+    fun deleteAll(deleteAllQuery: SimpleSQLiteQuery): Single<T>
 
 }

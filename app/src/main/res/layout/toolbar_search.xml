@@ -23,34 +23,45 @@
             android:layout_marginBottom="8dp">
 
             <ImageButton
-                android:id="@+id/menu"
+                android:id="@+id/back"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_centerVertical="true"
                 android:background="?selectableItemBackgroundBorderless"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_menu" />
+                android:src="@drawable/ic_back" />
 
-
-            <TextView
-                android:id="@+id/title"
+            <com.tamimattafi.myscheduler.app.ui.custom.views.FormInput
+                android:id="@+id/search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/search"
-                android:layout_toLeftOf="@id/search"
-                android:layout_toEndOf="@id/menu"
-                android:layout_toRightOf="@id/menu"
+                android:layout_toStartOf="@id/filter"
+                android:layout_toLeftOf="@id/filter"
+                android:layout_toEndOf="@id/back"
+                android:layout_toRightOf="@id/back"
+                android:background="@drawable/input_background"
+                android:clickable="true"
+                android:drawableStart="@drawable/ic_search"
+                android:drawableLeft="@drawable/ic_search"
+                android:drawablePadding="8dp"
+                android:focusable="true"
                 android:gravity="center_vertical"
+                android:hint="@string/search"
+                android:paddingStart="16dp"
                 android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
                 android:paddingRight="16dp"
-                android:text="@string/app_name"
-                android:textColor="@color/colorForeground"
-                android:textSize="18sp" />
+                android:paddingBottom="8dp"
+                android:textColor="@color/colorGrayDark"
+                android:textSize="14sp"
+                app:hintTextColor="@color/colorGrayLight"
+                app:startIconDrawable="@drawable/ic_search" />
 
             <ImageButton
-                android:id="@+id/search"
+                android:id="@+id/filter"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_alignParentEnd="true"
@@ -58,7 +69,7 @@
                 android:layout_centerVertical="true"
                 android:background="?selectableItemBackgroundBorderless"
                 android:contentDescription="@string/app_name"
-                android:src="@drawable/ic_search" />
+                android:src="@drawable/ic_filter" />
 
         </RelativeLayout>
     </com.tamimattafi.myscheduler.app.ui.custom.views.BaseToolbar>

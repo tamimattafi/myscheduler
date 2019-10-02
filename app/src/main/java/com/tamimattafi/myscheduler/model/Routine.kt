@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.tamimattafi.myscheduler.database.global.Tables
 
-@Entity(tableName = Tables.TABLE_ROUTINES)
+@Entity(tableName = Tables.ROUTINES)
 data class Routine(
     @PrimaryKey(autoGenerate = true) val id : Long? = null,
     var isActive: Boolean = false,

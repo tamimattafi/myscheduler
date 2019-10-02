@@ -1,4 +1,4 @@
-package com.tamimattafi.myscheduler.app.ui.custom.holders.dialog
+package com.tamimattafi.myscheduler.app.ui.custom.holders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

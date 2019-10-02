@@ -34,14 +34,14 @@ interface MvpRecyclerContract {
 
     interface Presenter<HOLDER : Holder> : BaseContract.Presenter {
         fun bindViewHolder(holder: HOLDER)
-        fun loadMoreRecyclerData()
+        fun loadRecyclerData()
     }
 
     interface View<HOLDER : Holder> : Listener {
         fun bindViewHolder(holder: HOLDER)
         fun showError(message: String)
         fun getRecyclerAdapter(): Adapter<HOLDER>
-        fun loadMoreData()
+        fun startListening()
         fun onRecyclerDataChanged(dataCount: Int)
     }
 

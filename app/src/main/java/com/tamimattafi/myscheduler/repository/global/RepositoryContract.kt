@@ -17,6 +17,10 @@ interface RepositoryContract {
         fun stopListening()
     }
 
+    interface SearchBase<T> : Base<T> {
+        fun updateSearchQuery(searchQuery: String?)
+    }
+
     abstract class Async<PARAM, RESULT>(private val callback: Callback<RESULT>) :
         AsyncTask<PARAM, Int, RESULT>() {
 

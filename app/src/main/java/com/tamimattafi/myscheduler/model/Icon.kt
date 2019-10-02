@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.tamimattafi.myscheduler.database.global.Tables
 
-@Entity(tableName = Tables.TABLE_ICONS)
+@Entity(tableName = Tables.ICONS)
 data class Icon(
     @PrimaryKey(autoGenerate = true) val id : Long? = null,
     @DrawableRes var background: Int,
